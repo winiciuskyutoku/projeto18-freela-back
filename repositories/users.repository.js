@@ -8,3 +8,8 @@ export async function signUpRepository(body){
 
     return db.query(`INSERT INTO users (name, email, image, description, password) VALUES ($1, $2, $3, $4, $5);`, [name, email, image, description, hash])
 }
+
+export async function signInRepository({userId, username}, token){
+
+    return db.query(`INSERT INTO sessions ("userId", "userName", token) VALUES ($1, $2, $3);`, [userId, username, token])
+}
