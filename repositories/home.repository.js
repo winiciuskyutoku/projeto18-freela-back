@@ -6,3 +6,11 @@ export async function getHomePageRepository(userId){
     
     return [userData.rows[0], userPosts.rows]
 }
+
+export async function getUsersRepository(body){
+    const {name} = body
+
+    const result = await db.query(`SELECT * FROM users WHERE name = $1;`, [name])
+    
+    return result
+}
